@@ -44,23 +44,23 @@ class TemplateDemo {
     }
 
     startAutoUpdate() {
-        setInterval(() => {
-            const newData = {
-                title: '更新后的个人信息 ' + new Date().toLocaleString(),
-                user: {
-                    name: '王小明',
-                    age: 25,
-                    skills: ['Vue', 'React', 'Node.js'],
-                    address: {
-                        city: '上海',
-                        district: '浦东新区'
-                    }
-                },
-                company: '创新科技股份有限公司',
-                isVIP: false
-            };
-            this.updateTemplate(newData);
-        }, 2000);
+        
+        const newData = {
+            title: '更新后的个人信息 ' + new Date().toLocaleString(),
+            user: {
+                name: '王小明',
+                age: 25,
+                skills: ['Vue', 'React', 'Node.js'],
+                address: {
+                    city: '上海',
+                    district: '浦东新区'
+                }
+            },
+            company: '创新科技股份有限公司',
+            isVIP: false
+        };
+        this.updateTemplate(newData);
+        
     }
 
     updateTemplate(data) {
@@ -69,8 +69,14 @@ class TemplateDemo {
     }
 }
 
+const demo = new TemplateDemo();
 // 初始化应用
 document.addEventListener('DOMContentLoaded', () => {
-    const demo = new TemplateDemo();
     demo.init();
 }); 
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === ' ') {
+        demo.startAutoUpdate();
+    }
+});
